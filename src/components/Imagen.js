@@ -42,7 +42,7 @@ const Imagen = ({ imagen }) => {
           className={classes.imagen}
           component="img"
           alt="Contemplative Reptile"
-          height="140px"
+          height="200px"
           image={previewURL}
           title={tags}
         />
