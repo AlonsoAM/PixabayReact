@@ -2,8 +2,20 @@ import { useEffect, useState } from 'react'
 import Formulario from './components/Formulario'
 import axios from 'axios'
 import ListadoImagenes from './components/ListadoImagenes'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import NavigateNextIcon from '@material-ui/icons/NavigateNext'
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}))
 
 function App() {
+  const classes = useStyles()
+
   const [busqueda, setBusqueda] = useState('')
   const [imagenes, setImagenes] = useState([])
 
@@ -62,23 +74,27 @@ function App() {
         <ListadoImagenes imagenes={imagenes} />
 
         {paginaActual === 1 ? null : (
-          <button
-            type="button"
-            className="btn btn-info mr-1"
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            startIcon={<ArrowBackIosIcon />}
             onClick={paginaAnterior}
           >
-            &laquo; Anterior
-          </button>
+            Anterior
+          </Button>
         )}
 
         {paginaActual === totalPaginas ? null : (
-          <button
-            type="button"
-            className="btn btn-info"
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            endIcon={<NavigateNextIcon />}
             onClick={paginaSiguiente}
           >
-            Siguiente &raquo;
-          </button>
+            Siguiente
+          </Button>
         )}
       </div>
     </div>
