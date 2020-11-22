@@ -21,6 +21,13 @@ const useStyles = makeStyles((theme) => ({
   boton: {
     width: '100%',
   },
+  imagen: {
+    objectFit: 'cover',
+    transition: 'all .3s ease',
+    '&:hover': {
+      transform: 'scale(1.2)',
+    },
+  },
 }))
 
 const Imagen = ({ imagen }) => {
@@ -32,9 +39,10 @@ const Imagen = ({ imagen }) => {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
+          className={classes.imagen}
           component="img"
           alt="Contemplative Reptile"
-          height="140"
+          height="140px"
           image={previewURL}
           title={tags}
         />
